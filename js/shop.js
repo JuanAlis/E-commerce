@@ -124,12 +124,11 @@ function applyPromotionsCart() {
         if (item.offer) {
             if (item.Qty >= item.offer.number) {
 
-                let discountGroup = item.price * (item.offer.percent / 100);
+                let totalPrice = item.Qty * item.price
 
+                let discountGroup = totalPrice * (item.offer.percent / 100);
 
-                let totalDiscount = discountGroup * Math.trunc(item.Qty / item.offer.number);
-
-                item.subtotalWithDiscount = item.price * item.Qty - totalDiscount;
+                item.subtotalWithDiscount = totalPrice- discountGroup;
 
             } else{
                 item.subtotalWithDiscount = item.price * item.Qty;
